@@ -2,7 +2,7 @@
 
 ## Overview
 
-Given the assignment's 4-day implementation window, the prototype intentionally prioritizes:
+The prototype intentionally prioritizes:
 - ingestion architecture
 - auditability
 - normalization workflows

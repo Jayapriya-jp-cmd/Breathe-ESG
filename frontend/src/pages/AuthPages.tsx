@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { Droplets, Lock, User, ArrowRight, Loader2, Globe } from 'lucide-react';
+import API_URL from '../config/api';
 
 export const Login = () => {
   const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ export const Login = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('http://localhost:8000/api/portal/auth/login/', { username, password });
+      const res = await axios.post(`${API_URL}/api/portal/auth/login/`, { username, password });
       login(res.data.token, res.data.username, res.data.organization);
       navigate('/');
     } catch (err: any) {
@@ -87,7 +88,7 @@ export const Register = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.post('http://localhost:8000/api/portal/auth/register/', formData);
+      const res = await axios.post(`${API_URL}/api/portal/auth/register/`, formData);
       login(res.data.token, res.data.username, res.data.organization);
       navigate('/');
     } catch (err: any) {

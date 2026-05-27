@@ -31,8 +31,9 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { useAuth } from '../context/AuthContext';
+import API_URL from '../config/api';
 
-const API_BASE = 'http://localhost:8000/api/portal';
+const API_BASE = `${API_URL}/api/portal`;
 
 interface AuditLog {
   id: number;

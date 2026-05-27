@@ -167,30 +167,71 @@ This mechanism simulates ESG reporting controls required for audit defensibility
 # 7. Deployment Choice
 
 ## Decision
-Frontend and backend both deployed on Vercel.
+Frontend deployed on Vercel, backend deployed on Vercel with Neon PostgreSQL as the production database.
 
 ## Rationale
 
-The platform uses Vercel for both frontend and backend deployment to simplify deployment management and accelerate iteration during the prototype phase.
+The platform uses a cloud-native deployment architecture designed for rapid prototyping, scalability, and simplified operational management.
 
-The React frontend benefits from:
+### Frontend Deployment
+
+The React + Vite frontend is deployed on Vercel to leverage:
+
 - global CDN delivery
-- automatic builds
+- automatic GitHub-based deployments
 - preview deployments
-- optimized static asset delivery
+- optimized static asset hosting
+- fast frontend performance
 
-The Django backend is deployed as serverless API functions with environment-based configuration for:
+This enabled rapid UI iteration and simplified frontend deployment workflows during development.
+
+### Backend Deployment
+
+The Django REST backend is also deployed on Vercel using serverless Python functions.
+
+The backend deployment supports:
 - REST API hosting
-- secure environment variables
+- secure environment variable management
 - scalable request handling
 - simplified CI/CD integration
+- production-ready API exposure
 
-This deployment strategy allowed rapid development, fast iteration, and easy deployment within the assignment timeline while still providing a publicly accessible production environment as required by the assignment.
+### Database Architecture
 
-The architecture intentionally prioritizes:
+SQLite was initially used during local development because of its simplicity and fast setup.
+
+However, Vercel serverless environments use read-only ephemeral filesystems, making SQLite unsuitable for production write operations.
+
+To solve this, the platform migrated to Neon PostgreSQL for production deployment.
+
+Neon PostgreSQL provides:
+- persistent cloud-hosted storage
+- scalable PostgreSQL infrastructure
+- secure managed database hosting
+- compatibility with Django ORM
+- serverless-friendly architecture
+
+### Final Production Stack
+
+Frontend:
+- React
+- TypeScript
+- Vite
+- Vercel
+
+Backend:
+- Django
+- Django REST Framework
+- Vercel Serverless Functions
+
+Database:
+- Neon PostgreSQL
+
+This deployment strategy prioritized:
 - deployment simplicity
-- fast onboarding
+- rapid iteration
+- production accessibility
 - developer productivity
-- demonstration readiness
+- assignment demonstration readiness
 
-over infrastructure customization or distributed cloud orchestration.
+while still maintaining realistic enterprise-style architecture patterns.
